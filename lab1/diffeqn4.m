@@ -1,0 +1,9 @@
+clear;
+clc;
+a=0.5;
+yn1=0;
+yn2=0.5;
+x=[ones(31)];
+y1=diffeqn(a,x,yn1);
+y2=diffeqn(a,x,yn2);
+stem(y2)

@@ -1,0 +1,9 @@
+a=1;
+yn1=0;
+x1=[zeros(31)];%0对1
+x1(1)=1;
+x2=[ones(31)];
+yx1=diffeqn(a,x1,yn1);
+yx2=diffeqn(a,x2,yn1);
+%stem(yx1)
+stem(yx2)
