@@ -4,26 +4,29 @@ f_name = 'C_01_02.wav';
 [x, fs] = audioread(f_name);
 L = length(x);
 t = (0:L-1)/fs;
-
-cutoff = [100, 200, 300];
+cutoff = [100 200 700];
 figure;
 for i = 1:length(cutoff)
-    plot(t, x, t, butterLPF(x, fs, 2, cutoff(i)));
+    subplot(length(cutoff), 1, i);
+    [b, a] = butter(2, cutoff(i)/(fs/2));
+    x_f = filter(b, a, x);
     hold on;
-    legend('orginal signal', 'envelope curve');
-    axis([t(1) t(end) xlim]); xlabel('t'); grid('on');
-    title(sprintf('Order: %d, Cutoff freq: %dHz', 3, cutoff(i)));
+    plot(t, x, t, x_f);
+    legend('original audio', 'envelope')
+    xlabel('t');
+    title(sprintf('order 2 cutoff %dHz', cutoff(i)))
 end
-
+%% part2
 order = [2, 6];
 figure;
 for i = 1:length(order)
     subplot(length(order), 1, i);
-    plot(t, x, t, butterLPF(x, fs, order(i), 200));
-    legend('orginal signal', 'envelope curve');
-    axis([t(1) t(end) xlim]); xlabel('t'); grid('on');
-    title(sprintf('Order: %d, Cutoff freq: %dHz', order(i), 200));
+    [b, a] = butter(order(i), 200/(fs/2));
+    x_f = filter(b, a, x);
+    legend('orginal audio', 'envelope');
+    title(sprintf('Order: %d, Cutoff freq: 200Hz',order(i)));
 end
+%% tes
 
 order = 1:2:10;
 figure; hold('on');
