@@ -1,8 +1,0 @@
-indu:
-1. Design basic filters via Matlab
-2. Use filtering to generate speech shaped noise and extract signal envelope
-3. Adjust the signal intensity adjusting signal-to-noise ratio (SNR) level normalizing signal energy
-exp:
-1.Learn to design and use different fiter, also find their difference.
-2.Learn to use filter analyaze wav file and 
-3.Try to adjust SNR in the signal. 
