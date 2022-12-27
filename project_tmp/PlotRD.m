@@ -47,6 +47,9 @@ for idx_start_time = 1:20
          array_range(idx_max_range(idx_start_time)), ...
          array_Doppler_frequency(idx_max_Doppler_frequency(idx_start_time)));
      title(temp)
+
+     FileName = strcat('Fdata_',num2str(idx_start_time),'.jpg');
+     saveas(gcf,FileName)
 end
 
 
