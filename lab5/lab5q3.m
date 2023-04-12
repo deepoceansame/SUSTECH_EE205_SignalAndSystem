@@ -7,20 +7,22 @@ t = (0:L-1)/fs;
 x = abs(x);
 
 cutoff = [100 200 700];
-figure;
+f531 = figure;
+figure(f531)
 for i = 1:length(cutoff)
     subplot(length(cutoff), 1, i);
     [b, a] = butter(2, cutoff(i)/(fs/2));
     x_f = filter(b, a, x);
     hold on;
     plot(t, x, t, x_f);
-    legennd('original audio', 'envelope')
+    legend('original audio', 'envelope')
     xlabel('t');
     title(sprintf('order 2 cutoff %dHz', cutoff(i)))
 end
 %% part2
 order = [2, 6];
-figure;
+f532 = figure;
+figure(f532)
 for i = 1:length(order)
     subplot(length(order), 1, i);
     [b, a] = butter(order(i), 200/(fs/2));

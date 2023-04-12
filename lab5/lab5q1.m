@@ -42,4 +42,11 @@ legend('noise', 'signal');
 title('psd of ssn and original audio'); xlabel('F(Hz)'); ylabel('PSD (dB/Hz)');
 audiowrite('ssn.wav',SSN,fs);
 
-
+%% generate SSN
+[pxx, w] = pwelch(sig, [], [], 512, fs);
+b = fir2(3000, w/(fs/2), sqrt(pxx/max(pxx)));
+% fir2(n,f,m) returns an nth-order FIR filter 
+% with frequency-magnitude characteristics specified 
+% in the vectors f and m.
+noise = 1 - 2*rand(1, length(y));
+SSN = filter(b, 1, noise);
